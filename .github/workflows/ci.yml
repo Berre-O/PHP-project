@@ -12,22 +12,22 @@ jobs:
   build:
       runs-on: ubuntu-latest
       steps:
-      - name: Checkout code
+        -name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install PHP 8.4
+        -name: Install PHP 8.4
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.4'
 
-      - name: Install dependencies
+        -name: Install dependencies
         run: composer install
 
-      - name: Check code Style
+        -name: Check code Style
         run: phpcs --standard=PSR12 src/
 
-      - name: Perform static analysis
+        -name: Perform static analysis
         run: phpstan analyse src/ --level=5
 
-      - name: Perform Unit Tests
+        -name: Perform Unit Tests
         run: vendor/bin/phpunit tests/ExampleTest.php
